@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import hr.stroeer.tictactoe.databinding.FragmentMenuBinding
 
 
@@ -49,6 +50,7 @@ class MenuFragment : Fragment() {
 
         dialog.findViewById<EditText>(R.id.room_id_edit_text)
         dialog.findViewById<Button>(R.id.ok_button)?.setOnClickListener {
+            navigateToGameFieldScreen()
             dialog.dismiss()
         }
     }
@@ -62,7 +64,12 @@ class MenuFragment : Fragment() {
 
         dialog.findViewById<EditText>(R.id.room_id_edit_text)
         dialog.findViewById<Button>(R.id.ok_button)?.setOnClickListener {
+            navigateToGameFieldScreen()
             dialog.dismiss()
         }
+    }
+
+    private fun navigateToGameFieldScreen() {
+        findNavController().navigate(R.id.action_menuFragment_to_gameFieldFragment)
     }
 }

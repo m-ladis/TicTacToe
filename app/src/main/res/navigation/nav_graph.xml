@@ -3,7 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/gameFieldFragment">
+    app:startDestination="@id/menuFragment">
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="hr.stroeer.tictactoe.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_gameFieldFragment"
+            app:destination="@id/gameFieldFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gameFieldFragment"
         android:name="hr.stroeer.tictactoe.GameFieldFragment"
