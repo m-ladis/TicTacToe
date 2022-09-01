@@ -34,6 +34,9 @@ class MenuFragment : Fragment() {
         binding.joinGameButton.setOnClickListener {
             showJoinDialog()
         }
+        binding.offlineModeButton.setOnClickListener {
+            navigateToGameFieldScreen()
+        }
     }
 
     override fun onDestroyView() {
@@ -48,8 +51,10 @@ class MenuFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
-        dialog.findViewById<EditText>(R.id.room_id_edit_text)
         dialog.findViewById<Button>(R.id.ok_button)?.setOnClickListener {
+            hostGame(
+                dialog.findViewById<EditText>(R.id.room_id_edit_text)?.text.toString()
+            )
             navigateToGameFieldScreen()
             dialog.dismiss()
         }
@@ -62,11 +67,21 @@ class MenuFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
-        dialog.findViewById<EditText>(R.id.room_id_edit_text)
         dialog.findViewById<Button>(R.id.ok_button)?.setOnClickListener {
+            joinGame(
+                dialog.findViewById<EditText>(R.id.room_id_edit_text)?.text.toString()
+            )
             navigateToGameFieldScreen()
             dialog.dismiss()
         }
+    }
+
+    private fun hostGame(roomName: String) {
+
+    }
+
+    private fun joinGame(roomName: String) {
+
     }
 
     private fun navigateToGameFieldScreen() {
